@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apotek Sehat Sejahtera</title>
+  <link rel="icon" type="image/png" href="logoapotek.png">
+  <link rel="stylesheet" href="style_admin.css">
+</head>
+
+<body>
+  <!-- BAGIAN HEADER / NAVIGASI ATAS -->
+  <header class="navbar">
+    <a href="#beranda" onclick="scrollToSection('beranda')">
+      <div class="logo-area">
+        <img src="logoapotek.png" class="logo-img">
+        <h3 class="logo-text">Apotek Sehat Sejahtera</h3>
+      </div>
+    </a>
+
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#beranda" onclick="scrollToSection('beranda')">Beranda</a></li>
+        
+        <li>
+          <a href="#tentang" onclick="scrollToSection('tentang')">Tentang Kami ▾</a>
+          <ul class="dropdown">
+            <li><a href="#berdiri" onclick="scrollToSection('tentang')">Berdiri Sejak</a></li>
+            <li><a href="#lokasi" onclick="scrollToSection('tentang')">Lokasi</a></li>
+            <li><a href="#cs" onclick="scrollToSection('tentang')">Customer Service</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="#produk" onclick="scrollToSection('produk')">Produk</a></li>
+        <li><a href="#" onclick="tampilkanKasir()">Kasir</a></li>
+        <li><a href="#" onclick="tampilkanLaporan()">Laporan</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="main-content">
+    <!-- HALAMAN BERANDA -->
+    <section id="beranda" class="section">
+      <div class="content">
+        <h2>Selamat Datang di Apotek Sehat Sejahtera</h2>
+        <p>
+          Apotek terpercaya yang menyediakan obat-obatan lengkap, harga terjangkau, 
+          dan pelayanan ramah setiap hari.
+        </p>
+        <button class="btn" onclick="tampilPromo()">Lihat Promo</button>
+      </div>
+    </section>
+
+    <!-- HALAMAN TENTANG KAMI -->
+    <section id="tentang" class="section">
+      <div class="content">
+        <h2>Tentang Kami</h2>
+        <p>
+          <strong>Apotek Sehat Sejahtera</strong> adalah apotek yang telah berdiri sejak tahun 2010, 
+          berkomitmen untuk menyediakan obat-obatan berkualitas dengan harga terjangkau.
+        </p>
+        <p>
+          Kami memiliki tim farmasi yang profesional dan siap melayani Anda dengan sepenuh hati.
+        </p>
+        
+        <div class="tentang-grid">
+          <div class="tentang-card" id="berdiri">
+            <h3>Berdiri Sejak</h3>
+            <p>15 Juli 2010</p>
+            <p>Didirikan oleh 3 Orang yaitu Bu Patricia.S, Bu Sharon, dan Bu Sandra dengan visi menyediakan obat berkualitas untuk masyarakat.</p>
+          </div>
+          
+          <div class="tentang-card" id="lokasi">
+            <h3>Lokasi</h3>
+            <p>Jl. Sehat Sejahtera No. 123</p>
+            <p>Kelurahan Sehat, Kecamatan Sejahtera, Kota Sehat 12345</p>
+            <p>Senin - Sabtu (08.00 - 21.00), Minggu (09.00 - 17.00)</p>
+          </div>
+          
+          <div class="tentang-card" id="cs">
+            <h3>Customer Service</h3>
+            <p>Telepon: (021) 1234-5678</p>
+            <p>WhatsApp: 0812-3456-7890</p>
+            <p>Email: info@apoteksehatsejahtera.com</p>
+            <p>Kami siap melayani Anda 24 jam untuk keadaan darurat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HALAMAN PRODUK -->
+    <section id="produk" class="section">
+      <div class="content">
+        <h2>Daftar Produk</h2>
+        <p>
+          Kami menyediakan berbagai macam obat-obatan dan suplemen kesehatan dengan kualitas terjamin.
+        </p>
+        
+        <div class="produk-grid">
+          <div class="produk-card">
+            <h3>Paracetamol 500mg</h3>
+            <p>Rp 5.000</p>
+          </div>
+          <div class="produk-card">
+            <h3>Amoxicillin 500mg</h3>
+            <p>Rp 25.000</p>
+          </div>
+          <div class="produk-card">
+            <h3>Vitamin C 1000mg</h3>
+            <p>Rp 15.000</p>
+          </div>
+          <div class="produk-card">
+            <h3>Antasida</h3>
+            <p>Rp 8.000</p>
+          </div>
+          <div class="produk-card">
+            <h3>Obat Batuk Herbal</h3>
+            <p>Rp 12.000</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- HALAMAN KASIR -->
+  <div id="kasir-container" class="kasir-container">
+    <div class="kasir-header">
+      <h2>Kasir Apotek</h2>
+    </div>
+    
+    <div class="kasir-content">
+      <div class="formkasir">
+        <label>Nama Customer</label>
+        <input type="text" id="nama" required>
+        
+        <label>Barang</label>
+        <input type="text" id="barang" required>
+        
+        <label>Qty</label>
+        <input type="number" id="qty" required>
+        
+        <label>Harga Satuan</label>
+        <input type="number" id="harga" required>
+        
+        <div class="total-display">Total: <span id="hasil">Rp 0</span></div>
+        
+        <button class="btn" onclick="prosesTransaksi()">Proses</button>
+        <button class="btn" onclick="tampilkanStruk()">Cetak Struk</button>
+        <button class="btn btn-reset" onclick="resetForm()">Reset</button>
+      </div>
+      
+      <div class="produk-list">
+        <h3>Daftar Produk</h3>
+        <div class="produk-item" onclick="pilihProduk('Paracetamol 500mg', 5000)">
+          <span class="nama">Paracetamol 500mg</span>
+          <span class="harga">Rp 5.000</span>
+        </div>
+        <div class="produk-item" onclick="pilihProduk('Amoxicillin 500mg', 25000)">
+          <span class="nama">Amoxicillin 500mg</span>
+          <span class="harga">Rp 25.000</span>
+        </div>
+        <div class="produk-item" onclick="pilihProduk('Vitamin C 1000mg', 15000)">
+          <span class="nama">Vitamin C 1000mg</span>
+          <span class="harga">Rp 15.000</span>
+        </div>
+        <div class="produk-item" onclick="pilihProduk('Antasida', 8000)">
+          <span class="nama">Antasida</span>
+          <span class="harga">Rp 8.000</span>
+        </div>
+        <div class="produk-item" onclick="pilihProduk('Obat Batuk Herbal', 12000)">
+          <span class="nama">Obat Batuk Herbal</span>
+          <span class="harga">Rp 12.000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HALAMAN LAPORAN -->
+  <div id="laporan-container" class="laporan-container">
+    <div class="laporan-header">
+      <h2>Laporan Penjualan</h2>
+    </div>
+    
+    <div class="laporan-content">
+      <div class="laporan-item">
+        <span class="label">Periode</span>
+        <span class="value">November 2025</span>
+      </div>
+      <div class="laporan-item">
+        <span class="label">Total Barang Terjual</span>
+        <span class="value"><span id="totalBarang">0</span> item</span>
+      </div>
+      <div class="laporan-item">
+        <span class="label">Total Penjualan</span>
+        <span class="value">Rp <span id="totalPenjualan">0</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP CETAK STRUK -->
+  <div id="popup-overlay" class="popup-overlay">
+    <div class="popup-content">
+      <button class="close-popup" onclick="tutupPopupStruk()">×</button>
+      <div class="struk-content">
+        <div class="struk-header">
+          <h1>APOTEK SEHAT SEJAHTERA</h1>
+          <p>Jl. Sehat Sejahtera No. 123</p>
+          <p>Telp: (021) 1234-5678</p>
+        </div>
+        
+        <table class="struk-table">
+          <tr>
+            <td class="label">Nama Customer</td>
+            <td id="struk-nama">-</td>
+          </tr>
+          <tr>
+            <td class="label">Nama Obat</td>
+            <td id="struk-barang">-</td>
+          </tr>
+          <tr>
+            <td class="label">Jumlah (Qty)</td>
+            <td id="struk-qty">-</td>
+          </tr>
+          <tr>
+            <td class="label">Harga Satuan</td>
+            <td id="struk-harga">-</td>
+          </tr>
+          <tr>
+            <td class="label">Total Bayar</td>
+            <td id="struk-total">-</td>
+          </tr>
+        </table>
+        
+        <div class="struk-footer">
+          <p>Terima kasih telah berbelanja di Apotek Sehat Sejahtera.</p>
+          <p>Semoga Lekas Sembuh ❤️</p>
+        </div>
+        
+        <button class="print-btn" onclick="cetakStruk()">Cetak</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <img src="logoapotek.png" class="footer-logo">
+        <p>
+          <strong>Apotek Sehat Sejahtera</strong> menyediakan layanan kebutuhan obat 
+          dan kesehatan dengan standar terbaik.
+        </p>
+      </div>
+      <div class="footer-sosmed">
+        <p>Social Media</p>
+        <ul>
+          <li><img src="facebook-logo.png"></li>
+          <li><img src="instagram-logo.png"></li>
+          <li><img src="twitter-logo.png"></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">
+      © 2025 Apotek Sehat Sejahtera | Kelompok: Sharon 10, Patricia.S 28, Sandra 32 | Kelas: XI.4
+    </p>
+  </footer>
+
+  <script src="data.js"></script>
+</body>
+</html>
